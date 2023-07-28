@@ -29,4 +29,6 @@ Paste the host varible from the server to the client.connect on the client.py  (
 
 5 Set up a public port on your ip and with 55555 as the port.
 
-6 In the client put your public ip (You can find it on https://whatismyipaddress.com/ and remember to turn off your vpn if you are using one) (Not safe) 
+6 In the client put your public ip (You can find it on https://whatismyipaddress.com/ and remember to turn off your vpn if you are using one)
+
+Do not share the client.py publicly only to people who you trust or you can get a domain
