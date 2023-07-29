@@ -1,34 +1,29 @@
 # ChatGPT-Multiplayer
-
-This is a API request made in python that allows you to chat to chatGPT together
+This is an API request made in Python that allows you to chat with ChatGPT together.
 
 # Setting up the server:
+(These steps will set it up on your Wi-Fi.)
 
-(This will only set it up on your wifi.)
+Get an API key from https://platform.openai.com/account/api-keys.
 
-1 Get an api key from https://platform.openai.com/account/api-keys
+Paste the API key in the openai.api_key variable on the server. (openai.api_key = 'your key')
 
-2 Paste the api key in the openai.api_key varible on the server. (openai.api_key = 'your key')
+Open the console and type in ipconfig.
 
-3 Open the console and type in ipconfig
-
-4 Get the IPv4 address and paste it in the host varible (host = 'Your ip')
-
+Get the IPv4 address and paste it in the host variable. (host = 'Your IP')
 
 # Setting up the client:
+Paste the host variable from the server into client.connect(('Host variable', 55555)) in the client.py file. (client.connect(('Host variable', 55555)))
 
-Paste the host varible from the server to the client.connect on the client.py  (client.connect(('Host varible', 55555)))
+# Making it available outside of your Wi-Fi:
+Open the console and type in ipconfig.
 
-# How to make it available outside of your wifi
+Go to your router page by typing the default gateway from the ipconfig output into any browser.
 
-1 Open the console and type in ipconfig
-   
-2 Go to your router page by typing the default gateway fron the ipconfig into any browser
-   
-3  Log in to the admin page (Usualy the password is admin, password or there are instructions on that page)
+Log in to the admin page (Usually the password is admin, password, or there are instructions on that page).
 
-5 Set up a public port on your ip and with 55555 as the port.
+Set up a public port on your IP with 55555 as the port.
 
-6 In the client put your public ip (You can find it on https://whatismyipaddress.com/ and remember to turn off your vpn if you are using one)
+In the client, put your public IP (You can find it on https://whatismyipaddress.com/ and remember to turn off your VPN if you are using one).
 
-Do not share the client.py publicly only to people who you trust or you can get a domain
+Note: Do not share the client.py publicly; only share it with people you trust or use a domain to avoid unauthorized access.
