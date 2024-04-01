@@ -1,9 +1,11 @@
 import threading
 import socket
-import openai
+from openai import OpenAI
+
+
 import os
-import openai
-openai.api_key = ''
+
+client = OpenAI(api_key='')
 messages = [
     {"role": "user", "content" : "You are an assistant in a chat. There are a couple people so before every message there will be <[name of the user]> so you can recognize them"}
 ]
@@ -19,35 +21,34 @@ def brodcast(message, sender):
     for client in clients:
         client.send(message.encode('utf-8'))
 
-def handle(client):
-    name = client.recv(1024).decode('utf-8')
+def handle(clients):
+    global messages
+    name = clients.recv(1024).decode('utf-8')
     while True:
         try:
-            message = client.recv(1024).decode('utf-8')
-            brodcast("<"+name+"> "+message, client)
+            message = clients.recv(1024).decode('utf-8')
+            brodcast("<"+name+"> "+message, clients)
             print("<"+name+"> "+message)
             if message.startswith("/chatgpt"): 
                 if message:
                     message = message.replace("/chatgpt", "", 1)
-                    messages.append(
+                    messages += [
                         {"role": "user", "content": "<"+name+"> "+message},
-                    )
-                    chat = openai.ChatCompletion.create(
-                        model="gpt-3.5-turbo", messages=messages
-                    )
-    
+                    ]
+                    chat = client.chat.completions.create(model="gpt-3.5-turbo", messages=messages)
+
                 reply = chat.choices[0].message.content
                 message = "chatgpt: "+reply
                 print(f"ChatGPT: {reply}")
                 messages.append({"role": "assistant", "content": reply})
-                brodcast(message, client)
+                brodcast(message, clients)
         except:
             index = clients.index(client)
             clients.remove(client)
             client.close()
-            
+
             brodcast(name+' left the chat', client)
-    
+
             break
 
 
