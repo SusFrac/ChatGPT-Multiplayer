@@ -6,7 +6,7 @@ This is an API request made in Python that allows you to chat with ChatGPT toget
 
 Get an API key from https://platform.openai.com/account/api-keys.
 
-Paste the API key in the openai.api_key variable on the server. (openai.api_key = 'your key')
+Set the API key as an environment variable.
 
 Open the console and type in ipconfig.
 
@@ -26,4 +26,4 @@ Set up a public port on your IP with 55555 as the port.
 
 In the client, put your public IP (You can find it on https://whatismyipaddress.com/ and remember to turn off your VPN if you are using one).
 
-Note: Do not share the client.py publicly; only share it with people you trust or use a domain to avoid unauthorized access.
+Note: It is not reccomonded not share the client.py publicly;
