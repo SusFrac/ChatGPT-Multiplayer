@@ -2,7 +2,7 @@ import socket
 import threading
 import sys
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('192.168.1.30', 55555))
+client.connect(('', 55555))
 nickname = input("Your name: ")
 client.send(nickname.encode('utf-8'))
 print("Use /chatgpt {message} to send messages to chatgpt")
