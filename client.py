@@ -10,6 +10,11 @@ def receive():
     while True:
         try:
             message = client.recv(1024).decode('utf-8')
+            if message == '!exit':
+                client.close()
+                break
+            
+            
             print(message)
         except:
             print('error nr 1 (problem with connection)')
@@ -19,7 +24,8 @@ def receive():
 def write():
     while True:
         try:
-            message = input('')
+            message = input()
+                
             if message == '!exit':
                 client.close()
                 break
