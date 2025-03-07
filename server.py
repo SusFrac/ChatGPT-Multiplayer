@@ -9,7 +9,7 @@ client = OpenAI()
 messages = [
     {"role": "user", "content" : "You are an assistant in a chat. There are a couple people so before every message there will be <[name of the user]> so you can recognize them"}
 ]
-host = '192.168.1.30'
+host = ''
 port = 55555
 
 server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
