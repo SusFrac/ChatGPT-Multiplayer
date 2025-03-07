@@ -2,7 +2,7 @@ import socket
 import threading
 import sys
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('', 55555))
+client.connect(('192.168.1.30', 55555))
 nickname = input("Your name: ")
 client.send(nickname.encode('utf-8'))
 print("Use /chatgpt {message} to send messages to chatgpt")
@@ -10,6 +10,11 @@ def receive():
     while True:
         try:
             message = client.recv(1024).decode('utf-8')
+            if message == '!exit':
+                client.close()
+                break
+            
+            
             print(message)
         except:
             print('error nr 1 (problem with connection)')
@@ -19,7 +24,8 @@ def receive():
 def write():
     while True:
         try:
-            message = input('')
+            message = input()
+                
             if message == '!exit':
                 client.close()
                 break
